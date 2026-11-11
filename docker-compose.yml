@@ -1,0 +1,15 @@
+# Expone el servidor de chat y su canal para enviar mensajes desde otra terminal.
+services:
+  chat-server:
+    image: python:3.11-alpine
+    working_dir: /app
+    # Monta los archivos del proyecto para ejecutar el servidor directamente.
+    volumes:
+      - .:/app
+    command: python 08_web_servidor.py
+    ports:
+      # Puerto de los clientes del chat.
+      - "8765:8765"
+      # Puerto de la consola remota del servidor.
+      - "8766:8766"
+        
